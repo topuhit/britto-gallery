@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js" integrity="sha256-ngJY93C4H39YbmrWhnLzSyiepRuQDVKDNCWO2iyMzFw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <style type="text/css">
+    .img-fluid {
+        height: 188px;
+        width: 250px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Handlebars JS Example</h1>
+    <div>
+        <div class="container">
+            <div class="row" id="gallery">
+            </div>
+        </div>
+    </div>
+    <script id="some-template" type="text/x-handlebars-template">
+        {{#each users}}
+{{#each children}}
+<div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3" style="margin:0;margin-bottom:0;padding-bottom:30px;"><a data-fancybox="gallery" href="https://topuhit.gitlab.io/britto-gallery/gallery/tours/{{../name}}/{{name}}"><img class="img-fluid" src="https://topuhit.gitlab.io/britto-gallery/gallery/thumb/{{../name}}/{{name}}"></a></div>
+{{/each}}
+<br>
+{{/each}}
+</script>
+    <script type="text/javascript">
+    $.ajax({
+        url: "https://topuhit.gitlab.io/britto-gallery/gallery.txt",
+        success: function(result) {
+          result = JSON.parse(result)
+            console.log(result.children['0'].children)
+            var gallery = ""
+            var source = $("#some-template").html();
+            var template = Handlebars.compile(source);
+
+            var data = {
+                users: result.children['0'].children
+            };
+
+            $('#gallery').append(template(data));
+
+
+        }
+    });
+    </script>
+</body>
+
+</html>
