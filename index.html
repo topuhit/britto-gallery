@@ -28,14 +28,14 @@
     <script id="some-template" type="text/x-handlebars-template">
         {{#each users}}
 {{#each children}}
-<div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3" style="margin:0;margin-bottom:0;padding-bottom:30px;"><a data-fancybox="gallery" href="https://topuhit.gitlab.io/britto-gallery/gallery/tours/{{../name}}/{{name}}"><img class="img-fluid" src="https://topuhit.gitlab.io/britto-gallery/gallery/thumb/{{../name}}/{{name}}"></a></div>
+<div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3" style="margin:0;margin-bottom:0;padding-bottom:30px;"><a data-fancybox="gallery" href="https://britto-gallery.netlify.com/gallery/tours/{{../name}}/{{name}}"><img class="img-fluid" src="https://britto-gallery.netlify.com/gallery/thumb/{{../name}}/{{name}}"></a></div>
 {{/each}}
 <br>
 {{/each}}
 </script>
     <script type="text/javascript">
     $.ajax({
-        url: "https://topuhit.gitlab.io/britto-gallery/gallery.txt",
+        url: "https://britto-gallery.netlify.com/gallery.txt",
         success: function(result) {
           result = JSON.parse(result)
             console.log(result.children['0'].children)
