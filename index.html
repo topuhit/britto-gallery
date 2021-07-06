@@ -47,7 +47,7 @@
 </script>
     <script type="text/javascript">
     $.ajax({
-        url: "https://britto-gallery.netlify.app/gallery.txt",
+        url: "/gallery.txt",
         success: function(result) {
           result = JSON.parse(result)
             console.log(result.children['0'].children)
